@@ -11,16 +11,16 @@
     if (!document.all) {
         document.all = document.getElementsByTagName("*");
     }
-    var addEventFunction = function (type, callback) {
-            if (document.addEventListener) {
-                this.addEventListener(type, callback, false);
-            } else if (document.attachEvent) {
-                this.attachEvent('on' + type, function() { 
-                  return callback.call(elem, window.event); 
-                });
-            }
-        };
+    var addEventFunction = 
     for (var i = 0; i < document.all.length; i++) {
-        document.all[i].addEvent = addEventFunction;
+        document.all[i].addEvent = function (type, callback) {
+	    	if (document.addEventListener) {
+	            this.addEventListener(type, callback, false);
+	        } else if (document.attachEvent) {
+	        	this.attachEvent('on' + type, function() { 
+	            	return callback.call(elem, window.event); 
+	            });
+	        }
+	    };
     }
 })();
