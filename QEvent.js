@@ -1,6 +1,6 @@
 (function () {
     var QItem = function (Query) {
-            if ( !! document.querySelectorAll(Query)[1]) {
+            if (!!document.querySelectorAll(Query)[1]) {
                 return document.querySelectorAll(Query);
             } else {
                 return document.querySelector(Query);
@@ -11,7 +11,6 @@
     if (!document.all) {
         document.all = document.getElementsByTagName("*");
     }
-    var addEventFunction = 
     for (var i = 0; i < document.all.length; i++) {
         document.all[i].addEvent = function (type, callback) {
 	    	if (document.addEventListener) {
