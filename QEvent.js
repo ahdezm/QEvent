@@ -12,10 +12,10 @@
         document.all = document.getElementsByTagName("*");
     }
     for (var i = 0; i < document.all.length; i++) {
-        document.all[i].addEvent = function (type, callback) {
-	    	if (document.addEventListener) {
-	            this.addEventListener(type, callback, false);
-	        } else if (document.attachEvent) {
+        document.all[i].addEvent = function (type,callback,fase) {
+	    	if (!!document.addEventListener) {
+	            this.addEventListener(type, callback, fase || false);
+	        } else if (!!document.attachEvent) {
 	        	this.attachEvent('on' + type, function() { 
 	            	return callback.call(elem, window.event); 
 	            });
